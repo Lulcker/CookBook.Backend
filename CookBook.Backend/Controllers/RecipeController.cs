@@ -16,6 +16,7 @@ namespace CookBook.Backend.Controllers;
 public class RecipeController(
     GetRecipesQuery getRecipesQuery,
     GetSendToModerationRecipesQuery getSendToModerationRecipesQuery,
+    GetSendToModerationRecipesCountQuery getSendToModerationRecipesCountQuery,
     GetRecipesByUserQuery getRecipesByUserQuery,
     GetRecipesByIdQuery getRecipesByIdQuery,
     CreateRecipeCommand createRecipeCommand,
@@ -47,6 +48,16 @@ public class RecipeController(
     public async Task<IActionResult> AllModeration([FromQuery] GetAllRecipesForAdministratorInputModel inputModel)
     {
         return Ok(await getSendToModerationRecipesQuery.Execute(inputModel));
+    }
+
+    /// <summary>
+    /// Получение количества рецептов для модерации
+    /// </summary>
+    /// <returns>Количество рецептов</returns>
+    [HttpGet("count-moderation")]
+    public async Task<IActionResult> CountModeration()
+    {
+        return Ok(await getSendToModerationRecipesCountQuery.Execute());
     }
     
     /// <summary>

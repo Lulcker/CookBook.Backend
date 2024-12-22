@@ -143,10 +143,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<CookBookDbContext>();
     if (context.Database.GetPendingMigrations().Any())
-    {
-        context.Database.EnsureDeleted();
         await context.Database.MigrateAsync();
-    }
 
     var createDefaultAdministratorCommand = services.GetRequiredService<CreateDefaultAdministratorCommand>();
     await createDefaultAdministratorCommand.Execute();

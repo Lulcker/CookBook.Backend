@@ -63,7 +63,7 @@ public class CreateRecipeCommand(
             Description = inputModel.Description,
             CreatedDateTime = DateTime.UtcNow,
             RecipeStatus = RecipeStatus.SendToModeration,
-            PhotoLink = inputModel.PhotoLink,
+            PhotoLink = string.Concat(inputModel.PhotoLink[0].ToString().ToLowerInvariant() + inputModel.PhotoLink[1..]),
             CategoryId = inputModel.CategoryId,
             UserId = userInfoProvider.Id!.Value
         };
@@ -81,7 +81,7 @@ public class CreateRecipeCommand(
             .Select(rs => new RecipeStep
             {
                 Description = rs.Description,
-                PhotoLink = rs.PhotoLink,
+                PhotoLink = string.Concat(rs.PhotoLink![0].ToString().ToLowerInvariant() + rs.PhotoLink[1..]),
                 RecipeId = recipe.Id
             }).ToList();
 

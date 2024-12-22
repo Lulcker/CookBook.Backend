@@ -55,7 +55,7 @@ public class RecipeFullInfoModel
     /// <summary>
     /// Ингредиенты
     /// </summary>
-    public ICollection<IngredientsModel> Ingredients { get; set; } = new HashSet<IngredientsModel>();
+    public ICollection<IngredientModel> Ingredients { get; set; } = new HashSet<IngredientModel>();
 
     /// <summary>
     /// Шаги репепта

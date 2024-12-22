@@ -19,9 +19,4 @@ public class ApproveRecipeInputModel
     /// Описание
     /// </summary>
     public required string Description { get; set; }
-    
-    /// <summary>
-    /// Шаги рецепта
-    /// </summary>
-    public required ICollection<ApproveRecipeStepInputModel> Steps { get; set; }
 }

@@ -6,7 +6,7 @@ namespace CookBook.Backend.Middlewares;
 
 public class UserInfoMiddleware
 {
-     #region Fields
+    #region Fields
     
     private readonly RequestDelegate _next;
 

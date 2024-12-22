@@ -5,7 +5,7 @@ namespace CookBook.Backend.App.Queries.Recipes.Models;
 /// <summary>
 /// Модель ингредиента
 /// </summary>
-public class IngredientsModel
+public class IngredientModel
 {
     /// <summary>
     /// Id

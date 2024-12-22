@@ -4,6 +4,7 @@ using CookBook.Backend.App.Queries.Categories.Models;
 using CookBook.Backend.App.Queries.FavoriteRecipes.Models;
 using CookBook.Backend.App.Queries.Products.Models;
 using CookBook.Backend.App.Queries.Recipes.Models;
+using CookBook.Backend.Domain.Dictionaries;
 using CookBook.Backend.Domain.Entities;
 
 namespace CookBook.Backend.App.Mappings;
@@ -45,7 +46,7 @@ public class MappingProfile : Profile
             .ForMember(r => r.CategoryName, t => t.MapFrom(entity => entity.Category.Name))
             .ForMember(r => r.UserLogin, t => t.MapFrom(entity => entity.User.Login))
             .ForMember(r => r.Rating, t => t.MapFrom(entity => entity.RecipeComments.Any() ? entity.RecipeComments.Average(r => r.Rating) : 0))
-            .ForMember(r => r.Ingredients, opt => opt.MapFrom(entity => entity.Ingredients.Select(pq => new IngredientsModel
+            .ForMember(r => r.Ingredients, opt => opt.MapFrom(entity => entity.Ingredients.Select(pq => new IngredientModel
             {
                 Id = pq.Id,
                 ProductName = pq.Product.Name,

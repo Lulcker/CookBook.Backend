@@ -40,19 +40,6 @@ public class ApproveRecipeCommand(
         recipe.Name = inputModel.Name;
         recipe.Description = inputModel.Description;
 
-        foreach (var recipeStep in inputModel.Steps)
-        {
-            var updateRecipeStep = recipe.RecipeSteps
-                .FirstOrDefault(rs => rs.Id == recipeStep.Id);
-
-            if (updateRecipeStep is null)
-                throw new BusinessException("Не найден шаг рецепта");
-            
-            InputModelHelper.TrimStringProperties(recipeStep);
-
-            updateRecipeStep.Description = recipeStep.Description;
-        }
-
         await changesSaver.SaveChangesAsync();
         
         logger.LogInformation("Одобрен рецепт {RecipeName} с Id: {RecipeId} администратором {AdministratorName} с Id: {AdministratorId}",
